@@ -1,62 +1,98 @@
-<script setup lang="ts">
-const user = useUserStore()
-const name = $ref(user.savedName)
+<script lang="ts" setup>
+let count = ref<number>(6)
+</script>
+<template>
+<div b w-100 h-100 ma p-2>
 
-const router = useRouter()
-const go = () => {
-  if (name)
-    router.push(`/hi/${encodeURIComponent(name)}`)
+<div :class="'count' + count + ' box'" ma my-10 flex>
+  <div v-for="item in count">
+
+  </div>
+</div>
+  <button v-for="item in 6" btn mx-2 @click="count = item">{{ item }}</button>
+  <button @click="count = Math.ceil(Math.random() * 6)" btn my-2>随机</button>
+</div>
+</template>
+<style>
+.box {
+  width: 100px;
+  height: 100px;
+  border: 3px solid black;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  box-sizing: content-box;
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px 4px #000000;
+    -webkit-box-shadow: 10px 10px 10px 4px #000000;
+    -moz-box-shadow: 10px 10px 10px 4px #090909;
+}
+.box div {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: black;
+  transition: .3s;
+}
+.count1 {
+
+}
+.count1 div {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+}
+.count2 {
+  justify-content: space-around;
+}
+.count3 {
+  align-items: start;
 }
 
-const { t } = useI18n()
-</script>
+.count3 div:nth-child(2){
+  margin-top: 30px;
+}
+.count3 div:nth-child(3) {
+  margin-top: 60px;
+}
+.count4 {
+  align-items: start;
+  flex-wrap:wrap;
+}
+.count4 div:nth-child(2n+0) {
+  margin-left: 30px;
+}
+.count4 div {
+  margin-top: 10px;
+}
+.count5 {
+  align-items: start;
+  flex-wrap: wrap;
+}
 
-<template>
-  <div>
-    <div text-4xl>
-      <div i-carbon-campsite inline-block />
-    </div>
-    <p>
-      <a rel="noreferrer" href="https://github.com/Jeffrey-mu/vitesse" target="_blank">
-        Vitesse
-      </a>
-    </p>
-    <p>
-      <em text-sm opacity-75>{{ t('intro.desc') }}</em>
-    </p>
+.count5 div:nth-child(2n+0) {
+  margin-left: 30px;
+}
+.count5 div:nth-child(3) {
+  margin: 0 30px;
+}
+.count5 div:nth-child(4) {
+  margin-left: 0px;
+}
+.count5 div:nth-child(5) {
+  margin-left: 30px;
+}
+.count5 div {
+}
+.count6 {
+  align-items: start;
+  flex-wrap: wrap;
+}
 
-    <div py-4 />
+.count6 div:nth-child(2n+0) {
+  margin-left: 30px;
+}
 
-    <input
-      id="input"
-      v-model="name"
-      :placeholder="t('intro.whats-your-name')"
-      :aria-label="t('intro.whats-your-name')"
-      type="text"
-      autocomplete="false"
-      p="x4 y2"
-      w="250px"
-      text="center"
-      bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
-      outline="none active:none"
-      @keydown.enter="go"
-    >
-    <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
-
-    <div>
-      <button
-        btn m-3 text-sm
-        :disabled="!name"
-        @click="go"
-      >
-        {{ t('button.go') }}
-      </button>
-    </div>
-  </div>
-</template>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>
+.count6 div {
+}
+</style>

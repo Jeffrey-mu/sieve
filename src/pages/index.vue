@@ -15,17 +15,16 @@ let count = ref<number>(6)
 </template>
 <style>
 .box {
+  background: rgb(233, 229, 229);
   width: 100px;
   height: 100px;
-  border: 3px solid black;
   justify-content: center;
   align-items: center;
   padding: 2px;
   box-sizing: content-box;
-  border-radius: 5px;
-  box-shadow: 10px 10px 10px 4px #000000;
-    -webkit-box-shadow: 10px 10px 10px 4px #000000;
-    -moz-box-shadow: 10px 10px 10px 4px #090909;
+  border-radius: 15px;
+  box-shadow: -6px 6px 8px inset rgba(255, 255, 255, 0.6),
+      6px -6px 8px inset rgba(0, 0, 0, 0.2);
 }
 .box div {
   width: 30px;
